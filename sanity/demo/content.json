@@ -1,0 +1,1091 @@
+{
+ "authors": [
+  {
+   "_id": "a1",
+   "name": "Robert Fuchs",
+   "slug": "robert-fuchs",
+   "demo": 1,
+   "role": {
+    "nl": "Hoofdredacteur",
+    "en": "Editor in chief"
+   },
+   "bio": {
+    "nl": "Schrijft sinds 2021 dagelijks over de cryptomarkt. Volgt vooral on-chain data, ETF-stromen en regelgeving in Europa.",
+    "en": "Has been covering the crypto market daily since 2021, with a focus on on-chain data, ETF flows and European regulation."
+   },
+   "x": "cryptocourant"
+  },
+  {
+   "_id": "a2",
+   "name": "Lieke Vermeer",
+   "slug": "lieke-vermeer",
+   "demo": 2,
+   "role": {
+    "nl": "Redacteur markten",
+    "en": "Markets reporter"
+   },
+   "bio": {
+    "nl": "Schrijft over altcoins, DeFi en alles wat er op de beurzen gebeurt.",
+    "en": "Writes about altcoins, DeFi and what moves on the exchanges."
+   },
+   "x": null
+  }
+ ],
+ "categories": [
+  {
+   "_id": "c1",
+   "title": {
+    "nl": "Bitcoin",
+    "en": "Bitcoin"
+   },
+   "slug": "bitcoin",
+   "slugEn": "bitcoin",
+   "coinId": "bitcoin",
+   "order": 10
+  },
+  {
+   "_id": "c2",
+   "title": {
+    "nl": "Ethereum",
+    "en": "Ethereum"
+   },
+   "slug": "ethereum",
+   "slugEn": "ethereum",
+   "coinId": "ethereum",
+   "order": 20
+  },
+  {
+   "_id": "c3",
+   "title": {
+    "nl": "Altcoins",
+    "en": "Altcoins"
+   },
+   "slug": "altcoins",
+   "slugEn": "altcoins",
+   "coinId": null,
+   "order": 30
+  },
+  {
+   "_id": "c4",
+   "title": {
+    "nl": "Regelgeving",
+    "en": "Regulation"
+   },
+   "slug": "regelgeving",
+   "slugEn": "regulation",
+   "coinId": null,
+   "order": 40
+  },
+  {
+   "_id": "c5",
+   "title": {
+    "nl": "DeFi",
+    "en": "DeFi"
+   },
+   "slug": "defi",
+   "slugEn": "defi",
+   "coinId": null,
+   "order": 50
+  }
+ ],
+ "posts": [
+  {
+   "_id": "p1",
+   "title": "Bitcoin ETF's zien grootste instroom sinds januari, koers test 98.000 euro",
+   "slug": "bitcoin-etf-instroom-grootste-sinds-januari",
+   "excerpt": "De Amerikaanse spot ETF's namen afgelopen week 1,4 miljard dollar op. Dat is de sterkste week sinds januari en de koers reageert.",
+   "publishedAt": "2026-09-09T06:30:00Z",
+   "featured": true,
+   "demoImage": "/demo/1.svg",
+   "language": "nl",
+   "categoryIds": [
+    "c1"
+   ],
+   "authorId": "a1",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "De negen Amerikaanse spot ETF's noteerden afgelopen week samen een netto instroom van 1,4 miljard dollar. Volgens data van Farside Investors ging bijna de helft daarvan naar het fonds van BlackRock. Het is de sterkste week sinds eind januari.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "Waarom institutionele partijen nu instappen",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "Vermogensbeheerders hebben sinds de zomer ruimte gekregen om bitcoin in modelportefeuilles op te nemen. Die portefeuilles worden per kwartaal herwogen, en dat zie je terug in de instroom. Het gaat om vaste allocaties van een tot drie procent, geen speculatieve posities.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b3",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b3s",
+       "text": "Daar komt bij dat de funding rate op de grote derivatenbeurzen bescheiden bleef. De stijging wordt dus niet gedragen door geleend geld, wat een correctie minder waarschijnlijk maakt dan in maart.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b4",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b4s",
+       "text": "Wat gaat bitcoin doen",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b5",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b5s",
+       "text": "Het niveau rond 98.000 euro is dit jaar drie keer eerder getest. Twee van die keren volgde een afwijzing binnen een week. Wat nu anders is, is dat de whales hun posities niet afbouwen: adressen met meer dan 1000 BTC hebben er in de afgelopen dertig dagen netto bij gekocht.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b6",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b6s",
+       "text": "Hoeveel kan bitcoin waard worden",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b7",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b7s",
+       "text": "Rekenmodellen die uitgaan van de huidige ETF-instroom komen uit tussen 110.000 en 130.000 euro voor het einde van het jaar. Dat veronderstelt wel dat de instroom aanhoudt en dat de Amerikaanse rente niet opnieuw omhoog gaat.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": "e1",
+   "sources": [
+    {
+     "label": "DefiLlama",
+     "url": "https://defillama.com"
+    },
+    {
+     "label": "Farside Investors",
+     "url": "https://farside.co.uk/btc/"
+    }
+   ]
+  },
+  {
+   "_id": "p2",
+   "title": "Ethereum verwerkt recordaantal transacties na verlaging van de L2-kosten",
+   "slug": "ethereum-recordaantal-transacties-l2-kosten",
+   "excerpt": "De layer 2 netwerken hebben samen voor het eerst meer dan 20 miljoen transacties op een dag verwerkt. De kosten op mainnet dalen mee.",
+   "publishedAt": "2026-09-08T23:30:00Z",
+   "featured": true,
+   "demoImage": "/demo/2.svg",
+   "language": "nl",
+   "categoryIds": [
+    "c2"
+   ],
+   "authorId": "a2",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "Base, Arbitrum en Optimism verwerkten dinsdag samen 20,3 miljoen transacties. Dat is een record en ruim het dubbele van een jaar geleden.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "Waar de groei vandaan komt",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "Het grootste deel van de toename komt van een handvol applicaties: twee sociale apps op Base en een perpetuals beurs op Arbitrum. Die drie zijn samen goed voor ongeveer veertig procent van het volume.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b3",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b3s",
+       "text": "Wat betekent dit voor de ETH koers",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b4",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b4s",
+       "text": "Meer activiteit op layer 2 betekent niet automatisch meer vraag naar ETH. De blobruimte die de rollups afnemen is sinds de laatste upgrade goedkoop, en de fees die naar mainnet vloeien zijn navenant laag.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": "e2",
+   "sources": null
+  },
+  {
+   "_id": "p3",
+   "title": "Europese toezichthouder werkt aan aanvullende regels voor stablecoins",
+   "slug": "esma-aanvullende-regels-stablecoins",
+   "excerpt": "ESMA wil dat uitgevers van stablecoins hun reserves per dag publiceren. De consultatie loopt tot december.",
+   "publishedAt": "2026-09-08T16:30:00Z",
+   "featured": false,
+   "demoImage": "/demo/3.svg",
+   "language": "nl",
+   "categoryIds": [
+    "c4"
+   ],
+   "authorId": "a1",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "De Europese effectentoezichthouder ESMA heeft een consultatiedocument gepubliceerd met aanvullende eisen voor uitgevers van stablecoins. De belangrijkste: dagelijkse publicatie van de samenstelling van de reserves.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "Wat er verandert voor gebruikers",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "Voor wie een stablecoin gebruikt om tussen posities te schuiven verandert er weinig. Voor uitgevers is de operationele last aanzienlijk: nu volstaat een maandelijkse attestatie.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": "e3",
+   "sources": null
+  },
+  {
+   "_id": "p4",
+   "title": "Solana-validators stemmen over lagere inflatie, opkomst is hoog",
+   "slug": "solana-validators-stemmen-lagere-inflatie",
+   "excerpt": "Een voorstel om de uitgifte van nieuwe SOL sneller af te bouwen haalde in de eerste ronde bijna zeventig procent van de stemmen.",
+   "publishedAt": "2026-09-08T09:30:00Z",
+   "featured": false,
+   "demoImage": "/demo/4.svg",
+   "language": "nl",
+   "categoryIds": [
+    "c3"
+   ],
+   "authorId": "a2",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "Het voorstel verlaagt het tempo waarin nieuwe SOL in omloop komt. De opkomst onder validators lag boven de tachtig procent, ongebruikelijk hoog voor een governance-stemming.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "Wat gaat SOL doen",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "Minder uitgifte betekent minder verkoopdruk vanuit stakers, maar ook een lagere beloning voor wie stake't. Welke van die twee zwaarder weegt is de vraag waar de discussie om draait.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": "e4",
+   "sources": null
+  },
+  {
+   "_id": "p5",
+   "title": "XRP stijgt na uitspraak in beroepszaak, volume verdubbelt",
+   "slug": "xrp-stijgt-uitspraak-beroepszaak",
+   "excerpt": "Een Amerikaanse rechter wees het laatste beroep af. Het handelsvolume in XRP verdubbelde binnen zes uur.",
+   "publishedAt": "2026-09-08T02:30:00Z",
+   "featured": false,
+   "demoImage": "/demo/5.svg",
+   "language": "nl",
+   "categoryIds": [
+    "c3"
+   ],
+   "authorId": "a1",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "De uitspraak maakt een einde aan een procedure die vier jaar liep. Het volume in XRP verdubbelde binnen zes uur naar 4,8 miljard dollar.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "Hoeveel kan XRP waard worden",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "Een crypto analist wees erop dat de vorige keer dat een juridische horde wegviel, de koers binnen twee weken veertig procent opliep en daarna grotendeels terugviel.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": null,
+   "sources": null
+  },
+  {
+   "_id": "p6",
+   "title": "DeFi-protocollen beheren weer meer dan 100 miljard dollar",
+   "slug": "defi-protocollen-100-miljard-dollar",
+   "excerpt": "De totale waarde in DeFi-protocollen staat voor het eerst sinds 2022 weer boven de 100 miljard dollar. Lending protocols nemen het grootste deel voor hun rekening.",
+   "publishedAt": "2026-09-07T19:30:00Z",
+   "featured": false,
+   "demoImage": "/demo/6.svg",
+   "language": "nl",
+   "categoryIds": [
+    "c5"
+   ],
+   "authorId": "a2",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "Volgens DefiLlama staat er nu 102 miljard dollar in DeFi-protocollen. Lending protocols zijn goed voor bijna de helft daarvan.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "Waar het geld heen gaat",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "Opvallend is de verschuiving naar vaults met een variabele rente. Gebruikers lijken bereid meer risico te nemen nu de rente op stablecoin-deposito's is gedaald.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": "e5",
+   "sources": null
+  },
+  {
+   "_id": "p7",
+   "title": "Miners verkopen minder bitcoin dan in enig kwartaal sinds de halving",
+   "slug": "miners-verkopen-minder-bitcoin-halving",
+   "excerpt": "De uitstroom vanaf mining pool adressen daalde met 38 procent. Miners lijken op hogere koersen te wachten.",
+   "publishedAt": "2026-09-07T12:30:00Z",
+   "featured": false,
+   "demoImage": "/demo/7.svg",
+   "language": "nl",
+   "categoryIds": [
+    "c1"
+   ],
+   "authorId": "a1",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "De hoeveelheid bitcoin die vanaf adressen van mining pools naar beurzen bewoog, daalde met 38 procent ten opzichte van het vorige kwartaal.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "Wat dit zegt over het aanbod",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "Minder verkoopdruk vanuit miners betekent dat er per dag minder nieuw aanbod op de markt komt. Bij gelijkblijvende vraag werkt dat prijsopdrijvend.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": "e6",
+   "sources": null
+  },
+  {
+   "_id": "p8",
+   "title": "Grote beurs voegt euro-paren toe voor twaalf altcoins",
+   "slug": "beurs-euro-paren-twaalf-altcoins",
+   "excerpt": "Nederlandse handelaren kunnen twaalf altcoins voortaan rechtstreeks in euro kopen, zonder omweg via een stablecoin.",
+   "publishedAt": "2026-09-07T05:30:00Z",
+   "featured": false,
+   "demoImage": "/demo/8.svg",
+   "language": "nl",
+   "categoryIds": [
+    "c3"
+   ],
+   "authorId": "a2",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "De uitbreiding scheelt gebruikers een conversiestap en daarmee kosten. Voor kleinere orders kan dat oplopen tot een half procent.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "Waarom dit uitmaakt",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "Directe euro-paren maken het ook makkelijker om winst en verlies bij te houden voor de belastingaangifte.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": null,
+   "sources": null
+  },
+  {
+   "_id": "e1",
+   "title": "Bitcoin ETFs post largest inflow since January as price tests 98,000 euro",
+   "slug": "bitcoin-etf-inflow-largest-since-january",
+   "excerpt": "The nine US spot ETFs took in 1.4 billion dollars last week, the strongest week since January, and the price is responding.",
+   "publishedAt": "2026-09-09T06:30:00Z",
+   "featured": true,
+   "demoImage": "/demo/1.svg",
+   "language": "en",
+   "categoryIds": [
+    "c1"
+   ],
+   "authorId": "a1",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "The nine US spot ETFs recorded a combined net inflow of 1.4 billion dollars last week. Close to half of that went to BlackRock's fund, according to Farside Investors.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "Why institutions are stepping in now",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "Asset managers have been able to add bitcoin to model portfolios since the summer. Those portfolios rebalance quarterly, and the inflow reflects that. These are fixed one to three percent allocations rather than speculative positions.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b3",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b3s",
+       "text": "What the funding rate says",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b4",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b4s",
+       "text": "Funding rates on the major derivatives venues stayed modest through the move, which suggests the rally is not being carried by leverage.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": "p1",
+   "sources": [
+    {
+     "label": "DefiLlama",
+     "url": "https://defillama.com"
+    },
+    {
+     "label": "Farside Investors",
+     "url": "https://farside.co.uk/btc/"
+    }
+   ]
+  },
+  {
+   "_id": "e2",
+   "title": "Ethereum layer 2 networks clear record 20 million daily transactions",
+   "slug": "ethereum-layer-2-record-transactions",
+   "excerpt": "Base, Arbitrum and Optimism together processed 20.3 million transactions in a single day, more than double a year ago.",
+   "publishedAt": "2026-09-08T23:30:00Z",
+   "featured": true,
+   "demoImage": "/demo/2.svg",
+   "language": "en",
+   "categoryIds": [
+    "c2"
+   ],
+   "authorId": "a2",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "Base, Arbitrum and Optimism together processed 20.3 million transactions on Tuesday, a record and more than double the figure from a year ago.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "Where the growth comes from",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "Most of the increase traces back to a handful of applications: two social apps on Base and a perpetuals exchange on Arbitrum account for roughly forty percent of the volume.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": "p2",
+   "sources": null
+  },
+  {
+   "_id": "e3",
+   "title": "European regulator drafts additional stablecoin reserve rules",
+   "slug": "esma-additional-stablecoin-rules",
+   "excerpt": "ESMA wants issuers to publish reserve composition daily. The consultation runs until December.",
+   "publishedAt": "2026-09-08T16:30:00Z",
+   "featured": false,
+   "demoImage": "/demo/3.svg",
+   "language": "en",
+   "categoryIds": [
+    "c4"
+   ],
+   "authorId": "a1",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "ESMA has published a consultation paper setting out additional requirements for stablecoin issuers, the headline one being daily publication of reserve composition.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "What changes for users",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "For anyone using a stablecoin to move between positions, little changes. For issuers the operational burden is significant.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": "p3",
+   "sources": null
+  },
+  {
+   "_id": "e4",
+   "title": "Solana validators vote on lower inflation with unusually high turnout",
+   "slug": "solana-validators-vote-lower-inflation",
+   "excerpt": "A proposal to wind down new SOL issuance faster drew close to seventy percent support in the first round.",
+   "publishedAt": "2026-09-08T09:30:00Z",
+   "featured": false,
+   "demoImage": "/demo/4.svg",
+   "language": "en",
+   "categoryIds": [
+    "c3"
+   ],
+   "authorId": "a2",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "The proposal reduces the rate at which new SOL enters circulation. Validator turnout was above eighty percent, unusually high for a governance vote.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "The trade-off",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "Lower issuance means less sell pressure from stakers, but also a smaller reward for staking.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": "p4",
+   "sources": null
+  },
+  {
+   "_id": "e5",
+   "title": "DeFi protocols hold more than 100 billion dollars again",
+   "slug": "defi-protocols-100-billion-dollars",
+   "excerpt": "Total value locked in DeFi is back above 100 billion dollars for the first time since 2022, with lending protocols taking the largest share.",
+   "publishedAt": "2026-09-08T02:30:00Z",
+   "featured": false,
+   "demoImage": "/demo/5.svg",
+   "language": "en",
+   "categoryIds": [
+    "c5"
+   ],
+   "authorId": "a2",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "DefiLlama puts total value locked at 102 billion dollars, with lending protocols accounting for close to half.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "Where the money is going",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "The notable shift is toward variable-rate vaults, suggesting users are willing to take more risk now that stablecoin deposit rates have fallen.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": "p6",
+   "sources": null
+  },
+  {
+   "_id": "e6",
+   "title": "Miners sold less bitcoin than in any quarter since the halving",
+   "slug": "miners-sold-less-bitcoin-since-halving",
+   "excerpt": "Outflows from mining pool addresses fell 38 percent quarter on quarter.",
+   "publishedAt": "2026-09-07T19:30:00Z",
+   "featured": false,
+   "demoImage": "/demo/6.svg",
+   "language": "en",
+   "categoryIds": [
+    "c1"
+   ],
+   "authorId": "a1",
+   "readingTime": 2,
+   "body": [
+    {
+     "_type": "block",
+     "_key": "b0",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b0s",
+       "text": "The amount of bitcoin moving from mining pool addresses to exchanges fell 38 percent compared with the previous quarter.",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b1",
+     "style": "h2",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b1s",
+       "text": "What it means for supply",
+       "marks": []
+      }
+     ]
+    },
+    {
+     "_type": "block",
+     "_key": "b2",
+     "style": "normal",
+     "markDefs": [],
+     "children": [
+      {
+       "_type": "span",
+       "_key": "b2s",
+       "text": "Less selling from miners means less new supply reaching the market each day.",
+       "marks": []
+      }
+     ]
+    }
+   ],
+   "translationId": "p7",
+   "sources": null
+  }
+ ]
+}
