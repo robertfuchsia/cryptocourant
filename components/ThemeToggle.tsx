@@ -49,6 +49,6 @@ export function ThemeToggle({ label }: { label: string }) {
 
 /** Zet het thema vóór de eerste paint, zodat de pagina niet flitst. */
 export function ThemeScript() {
-  const code = `(function(){try{var s=localStorage.getItem('cc-theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;var r=document.documentElement;if(d)r.classList.add('dark');r.dataset.theme=d?'dark':'light'}catch(e){}})()`;
+  const code = `(function(){try{var s=localStorage.getItem('cc-theme');var d=s?s!=='light':true;var r=document.documentElement;r.classList.toggle('dark',d);r.dataset.theme=d?'dark':'light'}catch(e){document.documentElement.classList.add('dark')}})()`;
   return <script dangerouslySetInnerHTML={{ __html: code }} />;
 }

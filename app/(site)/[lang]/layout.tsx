@@ -79,7 +79,13 @@ export default async function LangLayout({
   const lang = raw as Lang;
 
   return (
-    <html lang={HTML_LANG[lang]} className={`${inter.variable} ${serif.variable}`} suppressHydrationWarning>
+    <html
+      lang={HTML_LANG[lang]}
+      /* Donker is de standaard; het themascript haalt de class weg als iemand licht kiest. */
+      className={`dark ${inter.variable} ${serif.variable}`}
+      data-theme="dark"
+      suppressHydrationWarning
+    >
       <head>
         <ThemeScript />
       </head>

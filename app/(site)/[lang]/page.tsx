@@ -7,6 +7,9 @@ import type { PostCard as PostCardType } from "@/sanity/types";
 import { PostCard } from "@/components/PostCard";
 import { ArticleRail } from "@/components/ArticleRail";
 import { Movers } from "@/components/Movers";
+import { MarketBar } from "@/components/MarketBar";
+import { FearGreedGauge } from "@/components/FearGreedGauge";
+import { Derivatives } from "@/components/Derivatives";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Newsletter } from "@/components/Newsletter";
 import { href, isLang, t, type Lang } from "@/lib/i18n";
@@ -67,14 +70,24 @@ export default async function HomePage({
   const featured = data?.featured ?? [];
   const latest = data?.latest ?? [];
 
-  // Uitgelicht heeft voorrang; wat overblijft vult het raster.
+  // Uitgelicht heeft voorrang voor het openingsartikel; daarna telt de datum.
   const lead = featured[0] ?? latest[0];
-  const usedIds = new Set(lead ? [lead._id] : []);
-  const secondary = [...featured.slice(1), ...latest]
-    .filter((p) => !usedIds.has(p._id) && usedIds.add(p._id))
-    .slice(0, 4);
-  const rest = latest.filter((p) => !usedIds.has(p._id)).slice(0, 8);
-  const sidebar = latest.filter((p) => !usedIds.has(p._id)).slice(0, 6);
+
+  // Binnen de middenkolom komt elk artikel precies één keer voor.
+  const used = new Set<string>(lead ? [lead._id] : []);
+  const take = (list: PostCardType[], n: number) => {
+    const out: PostCardType[] = [];
+    for (const post of list) {
+      if (out.length >= n) break;
+      if (used.has(post._id)) continue;
+      used.add(post._id);
+      out.push(post);
+    }
+    return out;
+  };
+
+  const secondary = take([...featured.slice(1), ...latest], 4);
+  const rest = take(latest, 8);
 
   if (!lead) {
     return (
@@ -91,7 +104,7 @@ export default async function HomePage({
     name: dict.siteName,
     url: SITE_URL,
     logo: { "@type": "ImageObject", url: absolute("/icon.svg") },
-    description: dict.homeIntro,
+    description: dict.tagline,
     inLanguage: lang,
   };
 
@@ -125,7 +138,7 @@ export default async function HomePage({
       })),
   };
 
-  const railPosts = (featured.length ? featured : latest).slice(0, 6);
+  const railPosts = latest.slice(0, 5);
   const coinLinks = (data?.categories ?? []).map((c) => ({
     coinId: c.coinId,
     slug: c.slug,
@@ -139,12 +152,14 @@ export default async function HomePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify([orgLd, siteLd, listLd]) }}
       />
 
-      <header className="border-line mb-8 border-b pb-7">
-        <h1 className="headline text-3xl sm:text-4xl">{dict.homeHeading}</h1>
-        <p className="text-muted mt-3 max-w-[46rem] text-[0.98rem] leading-relaxed">
-          {dict.homeIntro}
-        </p>
+      <header className="mb-6 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h1 className="headline text-2xl sm:text-[1.75rem]">{dict.homeHeading}</h1>
+        <p className="text-subtle text-[0.78rem]">{dict.homeStandfirst}</p>
       </header>
+
+      <div className="mb-10">
+        <MarketBar lang={lang} />
+      </div>
 
       <div className="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)] xl:grid-cols-[220px_minmax(0,1fr)_300px]">
         {/* Leeslijst links: kort, genummerd, zonder beeld. */}
@@ -199,7 +214,8 @@ export default async function HomePage({
           ) : null}
 
           {(data?.categories ?? [])
-            .filter((c) => c.posts?.length)
+            .map((c) => ({ ...c, posts: (c.posts ?? []).filter((p) => !used.has(p._id)) }))
+            .filter((c) => c.posts.length)
             .map((category) => (
               <section key={category._id} className="mt-14">
                 <SectionHeading
@@ -219,6 +235,8 @@ export default async function HomePage({
         {/* Markt rechts: wat beweegt, met een pad naar het nieuws erachter. */}
         <aside className="order-3 space-y-8 lg:col-span-2 xl:col-span-1 xl:sticky xl:top-32 xl:self-start">
           <Movers lang={lang} coinLinks={coinLinks} />
+          <FearGreedGauge lang={lang} />
+          <Derivatives lang={lang} />
         </aside>
       </div>
 
