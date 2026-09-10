@@ -44,7 +44,6 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(SITE_URL),
-    robots: ALLOW_INDEXING ? undefined : { index: false, follow: false },
     title: { default: `${dict.siteName} — ${dict.tagline}`, template: `%s | ${dict.siteName}` },
     description: dict.tagline,
     applicationName: dict.siteName,
@@ -64,7 +63,7 @@ export async function generateMetadata({
       locale: lang === "nl" ? "nl_NL" : "en_US",
     },
     twitter: { card: "summary_large_image" },
-    robots: { index: true, follow: true },
+    robots: ALLOW_INDEXING ? { index: true, follow: true } : { index: false, follow: false },
   };
 }
 
