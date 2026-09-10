@@ -18,7 +18,7 @@ const ENDPOINT = "https://api.coingecko.com/api/v3/coins/markets";
  */
 export async function getQuotes(ids: string[]): Promise<Quote[]> {
   if (!ids.length) return [];
-  const url = `${ENDPOINT}?vs_currency=eur&ids=${ids.join(",")}&order=market_cap_desc&per_page=${ids.length}&page=1&sparkline=false&price_change_percentage=24h`;
+  const url = `${ENDPOINT}?vs_currency=usd&ids=${ids.join(",")}&order=market_cap_desc&per_page=${ids.length}&page=1&sparkline=false&price_change_percentage=24h`;
 
   try {
     const res = await fetch(url, {
@@ -60,7 +60,8 @@ export function formatPrice(value: number, lang: Lang) {
   const digits = value >= 1000 ? 0 : value >= 1 ? 2 : value >= 0.01 ? 4 : 6;
   return new Intl.NumberFormat(locale, {
     style: "currency",
-    currency: "EUR",
+    currency: "USD",
+    currencyDisplay: "narrowSymbol",
     minimumFractionDigits: digits,
     maximumFractionDigits: digits,
   }).format(value);
