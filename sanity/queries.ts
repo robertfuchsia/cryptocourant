@@ -74,7 +74,7 @@ export const postQuery = groq`*[(_type == "post" || _type == "article") && slug.
   metaDescription,
   noIndex,
   "readingTime": round(length(pt::text(body)) / 5 / 220) + 1,
-  author->{ _id, name, "slug": slug.current, image, role, bio, x, linkedin },
+  author->{ _id, name, "slug": slug.current, image, "role": coalesce(role[$lang], role.nl), "bio": coalesce(bio[$lang], bio.nl), x, linkedin },
   categories[]->${CATEGORY_LITE},
   translation->{ "slug": slug.current, language, title }
 }`;
