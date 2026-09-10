@@ -64,4 +64,23 @@ curl -X POST -H "Authorization: Bearer $SANITY_API_WRITE_TOKEN" \
 Daarna `mainImage` zetten met `{_type:"image", asset:{_ref:<asset-id>}, alt:"..."}`.
 
 De bronbestanden staan in `featured-images/` (buiten git; ze leven in Sanity).
+
+### Twee wegen naar dezelfde featured image
+
+1. **Zelf tekenen** — `scripts/featured-image.py`, zie hierboven. Altijd
+   beschikbaar, altijd binnen de specs, geen beeldmodel nodig.
+2. **Beeldmodel** — gebruik `scripts/featured-image-prompt.json` als prompt.
+   Die vraagt om een blauwe, minimale illustratie **zonder tekst en zonder
+   logo**, met rechtsonder een rustig vlak vrijgehouden. Haal het resultaat
+   daarna door:
+
+   ```
+   python3 scripts/brand-image.py --in ruw.png --out featured-images/<naam>.webp
+   ```
+
+   Dat snijdt naar 2:1, schaalt naar 1200x600, zet een zachte donkere hoek,
+   tekent het logo op ware grootte en drukt de webp onder 200 kB.
+
+Beeldmodellen kunnen geen letters. Daarom staat er nooit tekst of een logo
+in de prompt zelf — dat komt er achteraf scherp op.
 <!-- END:featured -->

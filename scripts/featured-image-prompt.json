@@ -1,0 +1,166 @@
+{
+  "topic": "zie titel, pak de twee belangrijkste keywords",
+  "market_context": null,
+  "aspect_ratio": "2:1",
+  "output_spec": {
+    "width": 1200,
+    "height": 600,
+    "format": "webp",
+    "max_file_size_kb": 200,
+    "note": "Laat het model op de hoogst mogelijke resolutie in 2:1 renderen. Het terugschalen naar 1200x600, de webp-compressie en het logo doet scripts/brand-image.py achteraf."
+  },
+  "style_name": "Crypto Courant — minimal blue fintech infographic",
+
+  "prompt": {
+    "system_goal": "Generate a clean editorial crypto news illustration in a minimal infographic style for Crypto Courant, a professional Dutch crypto news site. The image communicates the article topic through one clear symbolic element, stays visually calm and modern, and is unmistakably blue.",
+
+    "topic_analysis": {
+      "rule": "Identify the most relevant crypto news category from the topic and select the strongest symbolic visual representation.",
+      "categories": {
+        "specific_crypto_asset": ["bitcoin", "btc", "ethereum", "eth", "xrp", "solana", "sol", "cardano", "ada"],
+        "market_cycle": ["bull market", "bear market", "altcoin season", "market rally", "market crash"],
+        "technical_analysis": ["golden cross", "death cross", "support", "resistance", "moving average", "breakout"],
+        "whales": ["whale", "large holder", "whale accumulation"],
+        "institutional": ["etf", "institutional investment", "wall street", "fund"],
+        "mining": ["mining", "hashrate", "mining difficulty"],
+        "staking": ["staking", "validator"],
+        "regulation": ["regulation", "government", "ban", "clarity act", "mica"],
+        "lawsuit": ["lawsuit", "sec case", "court"],
+        "security": ["hack", "exploit", "security breach"],
+        "adoption": ["adoption", "companies buying bitcoin", "nation state bitcoin"],
+        "technology": ["upgrade", "fork", "network update"],
+        "defi": ["defi", "liquidity", "yield"]
+      }
+    },
+
+    "visual_priority_engine": {
+      "goal": "Choose the clearest infographic-style visual metaphor for the topic while keeping the composition minimal.",
+      "visual_templates": {
+        "specific_crypto_asset": "single large cryptocurrency coin",
+        "technical_analysis": "two thin glowing lines crossing, or a coin resting on a horizontal support band",
+        "whales": "large whale silhouette interacting with a crypto coin",
+        "bull_market": "bull symbol pushing a crypto coin upward",
+        "bear_market": "bear symbol pushing a crypto coin downward",
+        "altcoin_season": "multiple small altcoins orbiting a central coin",
+        "institutional": "crypto coin entering institutional vault gate",
+        "mining": "clean row of mining rigs producing coins",
+        "staking": "crypto coin connected to blockchain nodes",
+        "regulation": "crypto coin near government pillars",
+        "lawsuit": "crypto coin near courthouse pillars and legal scale",
+        "security": "crypto coin near broken shield symbol",
+        "adoption": "crypto coin connected to global network nodes",
+        "technology": "crypto coin surrounded by upgrade rings",
+        "defi": "crypto coins connected by liquidity network"
+      }
+    },
+
+    "coin_rules": {
+      "specific_assets": {
+        "max_coins": 1,
+        "coin_required": true,
+        "coin_size": "30 percent of frame"
+      },
+      "general_topics": {
+        "coin_optional": true,
+        "max_coins": 3
+      }
+    },
+
+    "crypto_asset_mapping": {
+      "BTC": { "coin": "bitcoin coin", "color": "#f7931a" },
+      "ETH": { "coin": "ethereum coin", "color": "#627eea" },
+      "XRP": { "coin": "xrp coin", "color": "#6c8cff" },
+      "SOL": { "coin": "solana coin", "color": "#14f195" },
+      "ADA": { "coin": "cardano coin", "color": "#0033ad" },
+      "note": "De munt houdt zijn eigen herkenbare kleur, maar blijft ingebed in een blauwe scene: blauwe gloed, blauwe reflecties, blauwe achtergrond. Bij een oranje munt (BTC) mag het oranje nooit meer beeldvlak vullen dan het blauw."
+    },
+
+    "brand_identity": {
+      "brand_palette": ["#071430", "#0C2758", "#2647FF", "#38A0FF", "#8FB9FF", "#C7E2FF"],
+      "palette_roles": {
+        "#071430": "diepste marine, achtergrond linksboven",
+        "#0C2758": "marine, achtergrond rechtsonder",
+        "#2647FF": "merkblauw, accenten en knooppunten",
+        "#38A0FF": "gloed en halo's",
+        "#8FB9FF": "lijnen en randen",
+        "#C7E2FF": "hoogtepunten, ijsblauw"
+      },
+      "rules": {
+        "brand_colors_must_be_visible": true,
+        "monochrome_blue": true,
+        "brand_colors_used_in": ["background gradient", "soft glow", "network nodes", "subtle reflections", "chart lines"],
+        "forbidden_colors": ["paars", "magenta", "roze", "groen als hoofdkleur", "warme aardtinten"]
+      }
+    },
+
+    "market_visualization": {
+      "rule": "If market_context is provided, display a minimal price movement line behind the subject.",
+      "chart_style": "thin glowing infographic line in #8FB9FF",
+      "types": {
+        "price_surge": "clean upward line",
+        "price_crash": "clean downward line",
+        "volatility": "smooth zigzag line"
+      },
+      "opacity": "low"
+    },
+
+    "visual_style": {
+      "style": "minimal fintech infographic illustration",
+      "render": "clean semi-3D shapes",
+      "lighting": "soft neon glow, light source top right",
+      "detail_level": "low",
+      "visual_noise": "very low",
+      "editorial_look": true
+    },
+
+    "composition_rules": {
+      "max_objects": 3,
+      "center_focus": false,
+      "subject_placement": "hoofdobject links of midden, niet rechtsonder",
+      "reserved_area": "rechtsonder ongeveer 260 x 90 pixels rustig en donker houden: daar komt het logo",
+      "large_negative_space": true,
+      "balanced_infographic_layout": true,
+      "safe_crop": "belangrijke elementen minstens 60 pixels van de rand, het beeld wordt bijgesneden naar 2:1"
+    },
+
+    "background": {
+      "type": "dark fintech gradient",
+      "primary_colors": ["#071430", "#0C2758"],
+      "brand_overlay": ["#2647FF", "#38A0FF"],
+      "texture": "very subtle blockchain grid"
+    },
+
+    "strict_exclusions": {
+      "no_text": true,
+      "no_numbers": true,
+      "no_labels": true,
+      "no_price_values": true,
+      "no_ui_dashboards": true,
+      "no_watermarks": true,
+      "no_logos": true,
+      "no_complex_charts": true,
+      "reason": "Beeldmodellen maken van letters een puinhoop. Het Crypto Courant-logo wordt achteraf scherp op het beeld gezet door scripts/brand-image.py."
+    },
+
+    "critical_instruction": "De illustratie blijft minimaal en infographic-achtig. Het beeld is dominant blauw: de merkkleuren #071430, #0C2758, #2647FF en #38A0FF moeten altijd zichtbaar zijn en samen het beeld bepalen. Paars, magenta en roze zijn verboden. Wordt een specifieke munt genoemd, toon er dan precies één. Is market_context gevuld, voeg dan een subtiele koerslijn op de achtergrond toe. Geen tekst, geen cijfers, geen logo in het beeld zelf, en houd rechtsonder een rustig donker vlak vrij.",
+
+    "final_quality": {
+      "resolution": "high",
+      "look": "professional crypto news infographic",
+      "finish": "clean balanced thumbnail suitable for editorial crypto news"
+    }
+  },
+
+  "post_processing": {
+    "script": "scripts/brand-image.py",
+    "does": [
+      "bijsnijden naar 2:1 en terugschalen naar 1200x600",
+      "een zachte donkere hoek rechtsonder voor leesbaarheid",
+      "het Crypto Courant-logo rechtsonder, op ware grootte getekend en dus haarscherp",
+      "opslaan als webp en de kwaliteit net zo lang verlagen tot het bestand onder 200 kB blijft"
+    ],
+    "usage": "python3 scripts/brand-image.py --in ruw.png --out featured-images/<naam>.webp"
+  },
+
+  "alt_text_rule": "Altijd een Nederlandse alt-tekst schrijven die beschrijft wat er te zien is en waar het artikel over gaat, zonder de woorden 'afbeelding van'. Zet hem op mainImage.alt in Sanity."
+}
