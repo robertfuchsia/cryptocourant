@@ -34,3 +34,34 @@ blijven daardoor privé. Zie `scripts/seed.mjs`.
 Snelle controle (zonder token, zo ziet een bezoeker het):
 `curl "https://jen186iw.api.sanity.io/v2026-09-09/data/query/production?query=count(*[])"`
 <!-- END:sanity-ids -->
+
+<!-- BEGIN:featured -->
+## Featured image bij elk artikel
+
+Elk artikel krijgt een featured image, gemaakt met `scripts/featured-image.py`.
+Vaste eisen: **1200x600, .webp, onder 200 kB** (het script regelt de kwaliteit),
+blauw palet (diep marine → lichtblauw), en het CryptoCourant-logo rechtsonder —
+dat wordt ná het terugschalen op ware grootte getekend, zodat het scherp blijft.
+Altijd een beschrijvende Nederlandse alt-tekst op `mainImage.alt`.
+
+```
+python3 scripts/featured-image.py --out featured-images/<naam>.webp \
+  --ticker ADA --kicker Cardano \
+  --headline "Steunzone onder" "de ADA koers" \
+  --sub "GPT-5 wijst op \$0,197 als vervalpunt" \
+  --motif support --label "steun \$0,197"
+```
+
+Motieven: `cross` (golden/death cross), `support` (steunzone met grens),
+`up` / `down` (koerslijn met vlak). Kop maximaal twee korte regels.
+
+Uploaden naar Sanity en aan het artikel hangen:
+```
+curl -X POST -H "Authorization: Bearer $SANITY_API_WRITE_TOKEN" \
+  -H "Content-Type: image/webp" --data-binary @featured-images/<naam>.webp \
+  "https://jen186iw.api.sanity.io/v2026-09-09/assets/images/production?filename=<naam>.webp"
+```
+Daarna `mainImage` zetten met `{_type:"image", asset:{_ref:<asset-id>}, alt:"..."}`.
+
+De bronbestanden staan in `featured-images/` (buiten git; ze leven in Sanity).
+<!-- END:featured -->
