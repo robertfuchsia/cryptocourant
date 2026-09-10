@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "sanity": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@sanity/mcp-server-sanity"
+      ],
+      "env": {
+        "SANITY_PROJECT_ID": "jen186iw",
+        "SANITY_DATASET": "production",
+        "SANITY_TOKEN": "skqvBWb7EgNsIYaRFgTYn8YHahwbMoMq8cZ6tnWIb6VzTUfZivwGlJskSI2I8Prq46TKu7pbpbnnZGRq7bhKPL0YOZyRYHC8sRZbQzqu67hgu1SH0TP6HgT3MTK3AgBECkHkSPVxZagJjtHojCzFVl82ObsSANoXN9LXbpIz6QgKT9SmzZjv"
+      }
+    }
+  }
+}
