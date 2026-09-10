@@ -134,6 +134,50 @@ export const blockContent = defineType({
       preview: { select: { title: "url" }, prepare: ({ title }) => ({ title: `Embed: ${title}` }) },
     }),
     defineArrayMember({
+      name: "tradingView",
+      title: "TradingView-grafiek",
+      type: "object",
+      fields: [
+        defineField({
+          name: "symbol",
+          title: "Symbool",
+          description:
+            'Beursnotatie zoals TradingView hem kent, bijvoorbeeld BINANCE:XRPUSDT, COINBASE:BTCUSD of CRYPTOCAP:TOTAL',
+          type: "string",
+          initialValue: "BINANCE:XRPUSDT",
+          validation: (r) => r.required(),
+        }),
+        defineField({
+          name: "variant",
+          title: "Weergave",
+          type: "string",
+          initialValue: "chart",
+          options: {
+            list: [
+              { title: "Grafiek", value: "chart" },
+              { title: "Compacte grafiek", value: "mini" },
+              { title: "Alleen koers", value: "ticker" },
+            ],
+            layout: "radio",
+          },
+        }),
+        defineField({
+          name: "height",
+          title: "Hoogte in pixels",
+          description: "Leeg laten voor de standaardhoogte",
+          type: "number",
+          validation: (r) => r.min(120).max(800),
+        }),
+      ],
+      preview: {
+        select: { symbol: "symbol", variant: "variant" },
+        prepare: ({ symbol, variant }) => ({
+          title: `TradingView: ${symbol}`,
+          subtitle: variant,
+        }),
+      },
+    }),
+    defineArrayMember({
       name: "priceTable",
       title: "Koerstabel",
       type: "object",

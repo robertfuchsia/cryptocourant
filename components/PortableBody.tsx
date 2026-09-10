@@ -3,6 +3,7 @@ import { PortableText, type PortableTextComponents } from "next-sanity";
 import type { PortableTextBlock } from "next-sanity";
 import { SanityImage } from "./SanityImage";
 import { PriceTable } from "./Ticker";
+import { TradingViewWidget } from "./TradingViewWidget";
 import { href, type Lang } from "@/lib/i18n";
 
 export function slugifyHeading(text: string) {
@@ -103,6 +104,14 @@ function components(lang: Lang): PortableTextComponents {
         </aside>
       ),
       priceTable: ({ value }) => <PriceTable lang={lang} coins={value?.coinIds ?? []} />,
+      tradingView: ({ value }) => (
+        <TradingViewWidget
+          lang={lang}
+          symbol={value?.symbol ?? "BINANCE:BTCUSDT"}
+          variant={value?.variant ?? "chart"}
+          height={value?.height}
+        />
+      ),
       embed: ({ value }) => {
         const url: string = value?.url ?? "";
         const yt = url.match(
