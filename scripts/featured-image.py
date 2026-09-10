@@ -196,6 +196,9 @@ def motif_support(img, box, label):
     px, py = line[-1]
     d.ellipse([px - 11 * S, py - 11 * S, px + 11 * S, py + 11 * S], fill=WHITE + (255,))
 
+    if not label:
+        return
+
     f = font(MED, 20)
     tb = d.textbbox((0, 0), label, font=f)
     tw, th = tb[2] - tb[0], tb[3] - tb[1]
@@ -245,52 +248,57 @@ def wordmark(img, margin=38, size=30):
     d.text((x - lb[0] + (lb[2] - lb[0]) + gap - rb[0], y - rb[1]), right, font=f, fill=BRAND)
 
 
-def compose(out, ticker, kicker, headline, motif, sub=None):
+def compose(out, ticker, motif, kicker=None, headline=None, sub=None):
+    """
+    Standaard zonder kop en kicker: alleen het beeld, zoals de promptspec
+    voorschrijft. Tekst hoort op de pagina, niet in de afbeelding — die wordt
+    bijgesneden in kaarten en op social, en dan valt de tekst er half af.
+    """
     img = background()
 
-    # Grafiekmotief over de rechterhelft, achter de tekst door
-    motif(img, (W * 0.40, H * 0.12, W * 0.955, H * 0.88))
+    with_text = bool(headline)
+    motif(img, (W * (0.40 if with_text else 0.37), H * 0.16, W * 0.94, H * 0.84))
 
-    # Donkere sluier links, zodat de tekst rustig blijft staan
-    veil = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    vd = ImageDraw.Draw(veil)
-    for x in range(int(W * 0.78)):
-        a = int(185 * (1 - x / (W * 0.78)) ** 1.4)
-        vd.line([(x, 0), (x, H)], fill=(6, 16, 40, a))
-    img.alpha_composite(veil)
+    if with_text:
+        veil = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        vd = ImageDraw.Draw(veil)
+        for x in range(int(W * 0.78)):
+            a = int(185 * (1 - x / (W * 0.78)) ** 1.4)
+            vd.line([(x, 0), (x, H)], fill=(6, 16, 40, a))
+        img.alpha_composite(veil)
 
-    coin(img, W * 0.155, H * 0.50, int(112 * S), ticker)
+    coin(img, W * (0.155 if with_text else 0.195), H * 0.50,
+         int((112 if with_text else 132) * S), ticker)
 
-    d = ImageDraw.Draw(img)
-    x = W * 0.295
+    if with_text:
+        d = ImageDraw.Draw(img)
+        x = W * 0.295
+        fk = font(BOLD, 21)
+        d.text((x, H * 0.235), kicker.upper(), font=fk, fill=(126, 196, 255, 255))
+        kb = d.textbbox((x, H * 0.235), kicker.upper(), font=fk)
+        d.line([(x, kb[3] + 14 * S), (x + 54 * S, kb[3] + 14 * S)],
+               fill=(126, 196, 255, 255), width=int(4 * S))
 
-    fk = font(BOLD, 21)
-    d.text((x, H * 0.235), kicker.upper(), font=fk, fill=(126, 196, 255, 255))
-    kb = d.textbbox((x, H * 0.235), kicker.upper(), font=fk)
-    d.line([(x, kb[3] + 14 * S), (x + 54 * S, kb[3] + 14 * S)], fill=(126, 196, 255, 255),
-           width=int(4 * S))
+        fh = font(BOLD, 52)
+        y = H * 0.345
+        for line in headline:
+            shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
+            ImageDraw.Draw(shadow).text((x, y), line, font=fh, fill=(4, 12, 32, 190))
+            shadow = shadow.filter(ImageFilter.GaussianBlur(7 * S))
+            img.alpha_composite(shadow)
+            d.text((x, y), line, font=fh, fill=WHITE + (255,))
+            y += 64 * S
 
-    fh = font(BOLD, 52)
-    y = H * 0.345
-    for line in headline:
-        shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
-        ImageDraw.Draw(shadow).text((x, y), line, font=fh, fill=(4, 12, 32, 190))
-        shadow = shadow.filter(ImageFilter.GaussianBlur(7 * S))
-        img.alpha_composite(shadow)
-        d.text((x, y), line, font=fh, fill=WHITE + (255,))
-        y += 64 * S
-
-    if sub:
-        fs = font(REG, 23)
-        d.text((x, y + 12 * S), sub, font=fs, fill=(186, 214, 245, 255))
+        if sub:
+            fs = font(REG, 23)
+            d.text((x, y + 12 * S), sub, font=fs, fill=(186, 214, 245, 255))
 
     final = img.convert("RGB").resize((1200, 600), Image.LANCZOS)
     wordmark(final)
 
-    # Onder 200 kB blijven zonder de kwaliteit onnodig te verlagen
-    for q in (92, 88, 84, 80, 76, 70):
+    import os
+    for q in (94, 90, 86, 82, 78, 72):
         final.save(out, "WEBP", quality=q, method=6)
-        import os
         if os.path.getsize(out) <= 200_000:
             return q, os.path.getsize(out)
     return q, os.path.getsize(out)
@@ -298,7 +306,7 @@ def compose(out, ticker, kicker, headline, motif, sub=None):
 
 MOTIFS = {
     "cross": lambda label: motif_golden_cross,
-    "support": lambda label: (lambda im, box: motif_support(im, box, label or "steun")),
+    "support": lambda label: (lambda im, box: motif_support(im, box, label)),
     "up": lambda label: (lambda im, box: motif_trend(im, box, "up")),
     "down": lambda label: (lambda im, box: motif_trend(im, box, "down")),
 }
@@ -309,13 +317,16 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description="Featured image voor cryptocourant.com")
     ap.add_argument("--out", required=True, help="pad naar het .webp-bestand")
     ap.add_argument("--ticker", required=True, help="ticker in de munt, bv. BTC")
-    ap.add_argument("--kicker", required=True, help="klein label erboven, bv. Bitcoin")
-    ap.add_argument("--headline", required=True, nargs="+", help="1 of 2 regels")
+    ap.add_argument("--kicker", help="klein label erboven; alleen samen met --headline")
+    ap.add_argument("--headline", nargs="+",
+                    help="1 of 2 regels tekst in het beeld. Standaard geen tekst.")
     ap.add_argument("--sub", help="regel onder de kop")
     ap.add_argument("--motif", default="up", choices=sorted(MOTIFS), help="grafiekmotief")
     ap.add_argument("--label", help="tekst in het kaartje bij motief 'support'")
     a = ap.parse_args()
 
-    quality, size = compose(a.out, a.ticker, a.kicker, a.headline[:2],
-                            MOTIFS[a.motif](a.label), sub=a.sub)
+    quality, size = compose(a.out, a.ticker, MOTIFS[a.motif](a.label),
+                            kicker=a.kicker,
+                            headline=a.headline[:2] if a.headline else None,
+                            sub=a.sub)
     print(f"{a.out}: 1200x600 webp, {size / 1000:.0f} kB (kwaliteit {quality})")
