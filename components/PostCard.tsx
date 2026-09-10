@@ -37,10 +37,10 @@ export function PostCard({
             image={post.mainImage}
             alt=""
             width={1200}
-            height={750}
+            height={600}
             priority={priority}
             sizes="(min-width: 1024px) 50vw, 100vw"
-            className="aspect-[8/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            className="aspect-[2/1] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         </Link>
         <div>
@@ -120,10 +120,10 @@ export function PostCard({
           image={post.mainImage}
           alt=""
           width={800}
-          height={500}
+          height={400}
           priority={priority}
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="aspect-[8/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          className="aspect-[2/1] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </Link>
       <div className="mt-4 flex flex-1 flex-col">

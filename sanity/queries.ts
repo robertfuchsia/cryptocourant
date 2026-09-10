@@ -65,7 +65,10 @@ export const postQuery = groq`*[(_type == "post" || _type == "article") && slug.
   title,
   "slug": slug.current,
   excerpt,
-  body,
+  body[]{
+    ...,
+    _type == "image" => { "dim": asset->metadata.dimensions }
+  },
   publishedAt,
   updatedAt,
   mainImage,

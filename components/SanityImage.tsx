@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { urlForImage } from "@/sanity/image";
 import type { SanityImage as SanityImageType } from "@/sanity/types";
@@ -10,7 +11,10 @@ type Props = {
   sizes?: string;
   priority?: boolean;
   quality?: number;
+  /** "crop" snijdt bij naar het gevraagde kader, "max" past het beeld erbinnen. */
+  fit?: "crop" | "max";
   className?: string;
+  style?: CSSProperties;
 };
 
 export function SanityImage({
@@ -21,7 +25,9 @@ export function SanityImage({
   sizes = "100vw",
   priority = false,
   quality,
+  fit = "crop",
   className,
+  style,
 }: Props) {
   const demoSrc = (image as { demoSrc?: string } | null | undefined)?.demoSrc;
   if (demoSrc) {
@@ -36,6 +42,7 @@ export function SanityImage({
         quality={quality}
         unoptimized
         className={className}
+        style={style}
       />
     );
   }
@@ -64,7 +71,7 @@ export function SanityImage({
 
   return (
     <Image
-      src={builder.width(width).height(height).fit("crop").url()}
+      src={builder.width(width).height(height).fit(fit).url()}
       alt={alt ?? image?.alt ?? ""}
       width={width}
       height={height}
@@ -72,6 +79,7 @@ export function SanityImage({
       priority={priority}
       quality={quality}
       className={className}
+      style={style}
     />
   );
 }

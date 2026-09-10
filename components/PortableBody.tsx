@@ -60,19 +60,31 @@ function components(lang: Lang): PortableTextComponents {
       },
     },
     types: {
-      image: ({ value }) => (
-        <figure className="my-8">
-          <SanityImage
-            image={value}
-            alt={value?.alt ?? ""}
-            width={1200}
-            height={750}
-            sizes="(min-width: 768px) 720px, 100vw"
-            className="w-full rounded-[var(--radius-card)] object-cover"
-          />
-          {value?.caption ? <figcaption>{value.caption}</figcaption> : null}
-        </figure>
-      ),
+      image: ({ value }) => {
+        // Grafieken en schermafbeeldingen houden hun eigen verhouding: niets
+        // bijsnijden, en nooit groter opvragen dan het origineel.
+        const dim = value?.dim as { width?: number; height?: number } | undefined;
+        const natural = dim?.width && dim?.height ? dim : { width: 1200, height: 750 };
+        const width = Math.min(natural.width!, 1200);
+        const height = Math.round((natural.height! / natural.width!) * width);
+
+        return (
+          <figure className="my-8">
+            <SanityImage
+              image={value}
+              alt={value?.alt ?? ""}
+              width={width}
+              height={height}
+              fit="max"
+              quality={90}
+              sizes={`(min-width: 768px) min(720px, ${width}px), 100vw`}
+              className="mx-auto h-auto w-full rounded-[var(--radius-card)]"
+              style={{ maxWidth: width }}
+            />
+            {value?.caption ? <figcaption>{value.caption}</figcaption> : null}
+          </figure>
+        );
+      },
       callout: ({ value }) => {
         const tone = value?.tone ?? "neutral";
         const accent =

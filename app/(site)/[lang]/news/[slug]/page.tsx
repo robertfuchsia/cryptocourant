@@ -217,11 +217,12 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
           <SanityImage
             image={post.mainImage}
             alt={post.mainImage?.alt ?? post.title}
-            width={1400}
-            height={790}
+            width={1200}
+            height={600}
             priority
+            quality={90}
             sizes="(min-width: 1024px) 900px, 100vw"
-            className="aspect-[16/9] w-full rounded-[var(--radius-card)] object-cover"
+            className="aspect-[2/1] w-full rounded-[var(--radius-card)] object-cover"
           />
           {post.mainImage?.credit ? (
             <figcaption className="text-subtle mt-2 text-xs">{post.mainImage.credit}</figcaption>
