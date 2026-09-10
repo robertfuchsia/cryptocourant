@@ -18,6 +18,7 @@
     "next-sanity": "^13.3.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-tweet": "^3.3.1",
     "sanity": "^6.13.0",
     "server-only": "^0.0.1",
     "styled-components": "^6.5.3"

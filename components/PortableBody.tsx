@@ -4,6 +4,7 @@ import type { PortableTextBlock } from "next-sanity";
 import { SanityImage } from "./SanityImage";
 import { PriceTable } from "./Ticker";
 import { TradingViewWidget } from "./TradingViewWidget";
+import { TweetEmbed, tweetId } from "./TweetEmbed";
 import { href, type Lang } from "@/lib/i18n";
 
 export function slugifyHeading(text: string) {
@@ -114,6 +115,7 @@ function components(lang: Lang): PortableTextComponents {
       ),
       embed: ({ value }) => {
         const url: string = value?.url ?? "";
+        if (tweetId(url)) return <TweetEmbed url={url} />;
         const yt = url.match(
           /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/
         );
