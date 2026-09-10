@@ -35,24 +35,24 @@ export const footerPagesQuery = groq`*[_type == "page" && language == $lang && s
 }`;
 
 export const homeQuery = groq`{
-  "featured": *[_type == "post" && language == $lang && !(_id in path("drafts.**"))]
+  "featured": *[(_type == "post" || _type == "article") && language == $lang && !(_id in path("drafts.**"))]
     | order(publishedAt desc)[0...3] ${CARD},
-  "latest": *[_type == "post" && language == $lang && !(_id in path("drafts.**"))]
+  "latest": *[(_type == "post" || _type == "article") && language == $lang && !(_id in path("drafts.**"))]
     | order(publishedAt desc)[0...18] ${CARD},
   "categories": *[_type == "category" && showInNav == true] | order(order asc)[0...4]{
     _id,
     ${CATEGORY_TITLE},
     ${CATEGORY_SLUG},
-    "posts": *[_type == "post" && language == $lang && references(^._id) && !(_id in path("drafts.**"))]
+    "posts": *[(_type == "post" || _type == "article") && language == $lang && references(^._id) && !(_id in path("drafts.**"))]
       | order(publishedAt desc)[0...4] ${CARD}
   }
 }`;
 
-export const postSlugsQuery = groq`*[_type == "post" && defined(slug.current) && !(_id in path("drafts.**"))]{
+export const postSlugsQuery = groq`*[(_type == "post" || _type == "article") && defined(slug.current) && !(_id in path("drafts.**"))]{
   "slug": slug.current, language
 }`;
 
-export const postQuery = groq`*[_type == "post" && slug.current == $slug && language == $lang && !(_id in path("drafts.**"))][0]{
+export const postQuery = groq`*[(_type == "post" || _type == "article") && slug.current == $slug && language == $lang && !(_id in path("drafts.**"))][0]{
   _id,
   title,
   "slug": slug.current,
@@ -72,7 +72,7 @@ export const postQuery = groq`*[_type == "post" && slug.current == $slug && lang
 }`;
 
 export const relatedQuery = groq`*[
-  _type == "post" &&
+  (_type == "post" || _type == "article") &&
   language == $lang &&
   _id != $id &&
   !(_id in path("drafts.**")) &&
@@ -80,8 +80,8 @@ export const relatedQuery = groq`*[
 ] | order(publishedAt desc)[0...3] ${CARD}`;
 
 export const newsIndexQuery = groq`{
-  "items": *[_type == "post" && language == $lang && !(_id in path("drafts.**"))] | order(publishedAt desc)[$from...$to] ${CARD},
-  "total": count(*[_type == "post" && language == $lang && !(_id in path("drafts.**"))])
+  "items": *[(_type == "post" || _type == "article") && language == $lang && !(_id in path("drafts.**"))] | order(publishedAt desc)[$from...$to] ${CARD},
+  "total": count(*[(_type == "post" || _type == "article") && language == $lang && !(_id in path("drafts.**"))])
 }`;
 
 export const categoryQuery = groq`*[
@@ -96,9 +96,9 @@ export const categoryQuery = groq`*[
 }`;
 
 export const categoryPostsQuery = groq`{
-  "items": *[_type == "post" && language == $lang && references($id) && !(_id in path("drafts.**"))]
+  "items": *[(_type == "post" || _type == "article") && language == $lang && references($id) && !(_id in path("drafts.**"))]
     | order(publishedAt desc)[$from...$to] ${CARD},
-  "total": count(*[_type == "post" && language == $lang && references($id) && !(_id in path("drafts.**"))])
+  "total": count(*[(_type == "post" || _type == "article") && language == $lang && references($id) && !(_id in path("drafts.**"))])
 }`;
 
 export const categorySlugsQuery = groq`*[_type == "category"]{
@@ -118,15 +118,15 @@ export const authorQuery = groq`*[_type == "author" && slug.current == $slug][0]
 }`;
 
 export const authorPostsQuery = groq`{
-  "items": *[_type == "post" && language == $lang && author._ref == $id && !(_id in path("drafts.**"))]
+  "items": *[(_type == "post" || _type == "article") && language == $lang && author._ref == $id && !(_id in path("drafts.**"))]
     | order(publishedAt desc)[$from...$to] ${CARD},
-  "total": count(*[_type == "post" && language == $lang && author._ref == $id && !(_id in path("drafts.**"))])
+  "total": count(*[(_type == "post" || _type == "article") && language == $lang && author._ref == $id && !(_id in path("drafts.**"))])
 }`;
 
 export const authorSlugsQuery = groq`*[_type == "author" && defined(slug.current)]{ "slug": slug.current }`;
 
 export const searchQuery = groq`*[
-  _type == "post" &&
+  (_type == "post" || _type == "article") &&
   language == $lang &&
   !(_id in path("drafts.**")) &&
   (title match $q || excerpt match $q || pt::text(body) match $q)
@@ -141,7 +141,7 @@ export const pageSlugsQuery = groq`*[_type == "page" && defined(slug.current)]{
 }`;
 
 export const sitemapQuery = groq`{
-  "posts": *[_type == "post" && noIndex != true && !(_id in path("drafts.**"))]{
+  "posts": *[(_type == "post" || _type == "article") && noIndex != true && !(_id in path("drafts.**"))]{
     "slug": slug.current, language, publishedAt, updatedAt
   },
   "pages": *[_type == "page"]{ "slug": slug.current, language },
@@ -151,7 +151,7 @@ export const sitemapQuery = groq`{
   "authors": *[_type == "author"]{ "slug": slug.current }
 }`;
 
-export const feedQuery = groq`*[_type == "post" && language == $lang && noIndex != true && !(_id in path("drafts.**"))]
+export const feedQuery = groq`*[(_type == "post" || _type == "article") && language == $lang && noIndex != true && !(_id in path("drafts.**"))]
   | order(publishedAt desc)[0...30]{
   title, "slug": slug.current, excerpt, publishedAt, mainImage,
   author->{ name },
