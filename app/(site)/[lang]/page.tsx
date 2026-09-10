@@ -10,6 +10,7 @@ import { Movers } from "@/components/Movers";
 import { MarketBar } from "@/components/MarketBar";
 import { FearGreedGauge } from "@/components/FearGreedGauge";
 import { Derivatives } from "@/components/Derivatives";
+import { EtfFlows } from "@/components/EtfFlows";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Newsletter } from "@/components/Newsletter";
 import { href, isLang, t, type Lang } from "@/lib/i18n";
@@ -236,6 +237,7 @@ export default async function HomePage({
         <aside className="order-3 space-y-8 lg:col-span-2 xl:col-span-1 xl:sticky xl:top-32 xl:self-start">
           <Movers lang={lang} coinLinks={coinLinks} />
           <FearGreedGauge lang={lang} />
+          <EtfFlows lang={lang} />
           <Derivatives lang={lang} />
         </aside>
       </div>

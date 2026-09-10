@@ -134,3 +134,22 @@ sessie openstaat. Zonder tijd: als draft laten staan en het even vragen.
 Na publicatie de live URL ophalen: status 200, featured image aanwezig, embeds
 gerenderd (`react-tweet-theme` in de HTML), geen terugval-links.
 <!-- END:aanlever -->
+
+<!-- BEGIN:etf -->
+## ETF-stromen: welke bron kan wel en welke niet
+
+Op de homepage staat een blok met de dagelijkse in- en uitstroom van spot-ETF's.
+
+- **XRP werkt vrij**: `https://xrp-insights.com/api/flows` geeft JSON zonder
+  sleutel, met netto stroom per dag, beheerd vermogen en een uitsplitsing per
+  uitgever. Zie `lib/etf.ts`.
+- **Bitcoin en ethereum niet**: Farside geeft bots een 403, en CoinGlass,
+  SoSoValue en CryptoDataAPI vragen allemaal een betaalde sleutel
+  (CryptoDataAPI $39/maand voor btc, eth en sol — die heeft juist géén xrp).
+  Komt er een sleutel, dan sluit die kant aan in `lib/etf.ts`.
+
+Let ook op de herkomst van marktdata in het algemeen: **Binance en Bybit
+blokkeren Amerikaanse IP-adressen** en Vercel draait deze site vanuit
+Washington. Hun API's geven daar een 451 of 403. OKX, CoinGecko en
+alternative.me werken wel vanaf daar en hebben geen sleutel nodig.
+<!-- END:etf -->
