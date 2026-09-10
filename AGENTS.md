@@ -84,3 +84,53 @@ De bronbestanden staan in `featured-images/` (buiten git; ze leven in Sanity).
 Beeldmodellen kunnen geen letters. Daarom staat er nooit tekst of een logo
 in de prompt zelf — dat komt er achteraf scherp op.
 <!-- END:featured -->
+
+<!-- BEGIN:aanlever -->
+## Vaste werkwijze bij een aangeleverd artikel
+
+Robert levert een tekst aan, eventueel met tijden en met afbeeldingen. Zonder
+dat hij erom vraagt gebeurt dit, in deze volgorde:
+
+**1. Artikel in Sanity zetten**
+Als draft, met punt-loos id `post-<lang>-<slug>`, `language`, `title`, `slug`,
+`excerpt`, `seoTitle`, `metaDescription`, `author` en `categories`. Koppen uit
+het schrijfdoc blijven exact staan: geen kop verplaatst, geen kop tot tekst
+gemaakt, geen keyword of interne link weggelaten.
+
+**2. Featured image**
+Maken volgens `scripts/featured-image-prompt.json` — 1200x600 webp onder
+200 kB, blauw palet, logo rechtsonder. Zelf tekenen met
+`scripts/featured-image.py`, of een beeld uit een beeldmodel door
+`scripts/brand-image.py` halen. Daarna uploaden naar Sanity **en instellen als
+`mainImage` met een beschrijvende Nederlandse `alt`**. Uploaden zonder
+instellen is niet af.
+
+**3. X-links naar embeds**
+Elke x.com- of twitter.com-link die als losse regel in de tekst staat wordt een
+`embed`-blok met die url, geen link in een tekstregel. YouTube net zo.
+`components/TweetEmbed.tsx` rendert ze server-side.
+
+**4. Aangeleverde afbeeldingen in de tekst**
+Origineel uploaden, niet herschalen en niet opnieuw comprimeren — Sanity maakt
+zelf de varianten en `SanityImage` levert ze op maat. Als `image`-blok op de
+plek waar ze in het schrijfdoc staan, altijd met `alt`. Alleen omzetten als het
+formaat niet door Sanity wordt geslikt.
+
+**5. Inplannen op Nederlandse tijd**
+Tijden die Robert noemt zijn Nederlandse tijd (Europe/Amsterdam), ook al zit
+hij in Singapore. Nooit zelf omrekenen; dit script doet het, inclusief zomer-
+en wintertijd:
+
+```
+python3 scripts/schedule-publish.py post-nl-<slug> "2026-09-11 09:00"
+python3 scripts/schedule-publish.py --list
+python3 scripts/schedule-publish.py --cancel sch-...
+```
+
+De schedule draait bij Sanity zelf, dus publiceren gaat door zonder dat er een
+sessie openstaat. Zonder tijd: als draft laten staan en het even vragen.
+
+**6. Controleren**
+Na publicatie de live URL ophalen: status 200, featured image aanwezig, embeds
+gerenderd (`react-tweet-theme` in de HTML), geen terugval-links.
+<!-- END:aanlever -->
