@@ -84,9 +84,10 @@ export default async function AuthorPage({
           <SanityImage
             image={author.image}
             alt={author.name}
-            width={200}
-            height={200}
-            sizes="88px"
+            width={480}
+            height={480}
+            sizes="96px"
+            quality={90}
             className="h-20 w-20 rounded-full object-cover"
           />
         ) : null}

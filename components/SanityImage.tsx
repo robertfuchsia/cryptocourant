@@ -9,6 +9,7 @@ type Props = {
   height: number;
   sizes?: string;
   priority?: boolean;
+  quality?: number;
   className?: string;
 };
 
@@ -19,6 +20,7 @@ export function SanityImage({
   height,
   sizes = "100vw",
   priority = false,
+  quality,
   className,
 }: Props) {
   const demoSrc = (image as { demoSrc?: string } | null | undefined)?.demoSrc;
@@ -31,6 +33,7 @@ export function SanityImage({
         height={height}
         sizes={sizes}
         priority={priority}
+        quality={quality}
         unoptimized
         className={className}
       />
@@ -67,6 +70,7 @@ export function SanityImage({
       height={height}
       sizes={sizes}
       priority={priority}
+      quality={quality}
       className={className}
     />
   );
