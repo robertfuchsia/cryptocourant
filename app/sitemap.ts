@@ -6,7 +6,7 @@ import { absolute } from "@/lib/site";
 
 type SitemapData = {
   posts: Array<{ slug: string; language: Lang; publishedAt: string; updatedAt?: string }>;
-  pages: Array<{ slug: string; language: Lang }>;
+  pages: Array<{ slug: string; language: Lang; updatedAt?: string }>;
   categories: Array<{ nl: string; en: string }>;
   authors: Array<{ slug: string }>;
 };
@@ -78,8 +78,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (!page.slug) continue;
     entries.push({
       url: absolute(href.page(page.language, page.slug)),
+      // De datum van de tekst, niet van vandaag: een pagina met live cijfers
+      // is niet bijgewerkt zolang de tekst niet is aangeraakt.
+      lastModified: page.updatedAt ? new Date(page.updatedAt) : undefined,
       changeFrequency: "monthly",
-      priority: 0.3,
+      priority: 0.5,
     });
   }
 

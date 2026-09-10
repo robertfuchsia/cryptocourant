@@ -5,6 +5,11 @@ import { SanityImage } from "./SanityImage";
 import { PriceTable } from "./Ticker";
 import { TradingViewWidget } from "./TradingViewWidget";
 import { TweetEmbed, tweetId } from "./TweetEmbed";
+import { FearGreedGauge } from "./FearGreedGauge";
+import { Movers } from "./Movers";
+import { Derivatives } from "./Derivatives";
+import { EtfFlows } from "./EtfFlows";
+import { MarketBar } from "./MarketBar";
 import { href, type Lang } from "@/lib/i18n";
 
 export function slugifyHeading(text: string) {
@@ -117,6 +122,30 @@ function components(lang: Lang): PortableTextComponents {
         </aside>
       ),
       priceTable: ({ value }) => <PriceTable lang={lang} coins={value?.coinIds ?? []} />,
+      /**
+       * Dezelfde blokken als in de zijkolom, maar dan midden in een artikel.
+       * De cijfers komen bij het uitserveren binnen, dus het artikel zelf
+       * hoeft nooit bijgewerkt te worden om actueel te blijven.
+       */
+      liveData: ({ value }) => {
+        const widget = value?.widget as string | undefined;
+        const inner =
+          widget === "movers" ? (
+            <Movers lang={lang} />
+          ) : widget === "derivatives" ? (
+            <Derivatives lang={lang} />
+          ) : widget === "etfFlows" ? (
+            <EtfFlows lang={lang} />
+          ) : widget === "marketBar" ? (
+            <MarketBar lang={lang} />
+          ) : (
+            <FearGreedGauge lang={lang} />
+          );
+
+        return (
+          <div className="not-prose my-8 mx-auto max-w-[26rem] sm:max-w-none">{inner}</div>
+        );
+      },
       tradingView: ({ value }) => (
         <TradingViewWidget
           lang={lang}

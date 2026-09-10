@@ -178,6 +178,36 @@ export const blockContent = defineType({
       },
     }),
     defineArrayMember({
+      name: "liveData",
+      title: "Live marktdata",
+      type: "object",
+      description:
+        "Zet een van de blokken van de homepage midden in de tekst. De cijfers worden bij het uitserveren opgehaald; het artikel zelf verandert niet.",
+      fields: [
+        defineField({
+          name: "widget",
+          title: "Welk blok",
+          type: "string",
+          initialValue: "fearGreed",
+          options: {
+            list: [
+              { title: "Angst en hebzucht", value: "fearGreed" },
+              { title: "Stijgers en dalers", value: "movers" },
+              { title: "Bitcoin derivaten", value: "derivatives" },
+              { title: "XRP ETF-stromen", value: "etfFlows" },
+              { title: "Marktbalk", value: "marketBar" },
+            ],
+            layout: "radio",
+          },
+          validation: (r) => r.required(),
+        }),
+      ],
+      preview: {
+        select: { widget: "widget" },
+        prepare: ({ widget }) => ({ title: `Live marktdata: ${widget}` }),
+      },
+    }),
+    defineArrayMember({
       name: "priceTable",
       title: "Koerstabel",
       type: "object",

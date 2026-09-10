@@ -157,7 +157,7 @@ export const sitemapQuery = groq`{
   "posts": *[(_type == "post" || _type == "article") && noIndex != true && !(_id in path("drafts.**"))]{
     "slug": slug.current, language, publishedAt, updatedAt
   },
-  "pages": *[_type == "page"]{ "slug": slug.current, language },
+  "pages": *[_type == "page"]{ "slug": slug.current, language, "updatedAt": _updatedAt },
   "categories": *[_type == "category"]{
     "nl": slug.current, "en": coalesce(slugEn.current, slug.current)
   },
