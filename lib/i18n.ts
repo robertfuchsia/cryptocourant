@@ -34,6 +34,11 @@ export const t = {
   nl: {
     siteName: "CryptoCourant",
     tagline: "Crypto nieuws zonder ruis",
+    homeHeading: "Crypto nieuws",
+    homeIntro:
+      "Dagelijks crypto nieuws en analyse over de bitcoin koers, ethereum, XRP en de rest van de markt. " +
+      "Elk artikel legt uit wat er gebeurde, welke cijfers eronder liggen en wat het betekent voor Nederlandse beleggers, " +
+      "inclusief de regels rond MiCA en box 3. Nuchter geschreven, zonder promoties en zonder presales.",
     latest: "Laatste nieuws",
     readMore: "Lees verder",
     allNews: "Al het nieuws",
@@ -83,6 +88,11 @@ export const t = {
   en: {
     siteName: "CryptoCourant",
     tagline: "Crypto news without the noise",
+    homeHeading: "Crypto news",
+    homeIntro:
+      "Daily crypto news and analysis on the bitcoin price, ethereum, XRP and the wider market. " +
+      "Every article explains what happened, the numbers behind it and what it means for European investors, " +
+      "including the rules under MiCA. Written plainly, without promotions and without presales.",
     latest: "Latest news",
     readMore: "Read more",
     allNews: "All news",

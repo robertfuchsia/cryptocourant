@@ -7,7 +7,7 @@ import { PostCard } from "@/components/PostCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Newsletter } from "@/components/Newsletter";
 import { href, isLang, t, type Lang } from "@/lib/i18n";
-import { hreflangAlternates } from "@/lib/site";
+import { absolute, hreflangAlternates, SITE_URL } from "@/lib/site";
 
 type HomeData = {
   featured: PostCardType[];
@@ -70,13 +70,66 @@ export default async function HomePage({
   if (!lead) {
     return (
       <div className="container-page py-24 text-center">
-        <p className="text-muted">{dict.nothingYet}</p>
+        <h1 className="headline text-3xl">{dict.homeHeading}</h1>
+        <p className="text-muted mt-4">{dict.nothingYet}</p>
       </div>
     );
   }
 
+  const orgLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsMediaOrganization",
+    name: dict.siteName,
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: absolute("/icon.svg") },
+    description: dict.homeIntro,
+    inLanguage: lang,
+  };
+
+  const siteLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: dict.siteName,
+    url: SITE_URL,
+    inLanguage: lang,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${absolute(href.search(lang))}?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  const listLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${dict.homeHeading} — ${dict.siteName}`,
+    itemListElement: [lead, ...latest.filter((p) => p._id !== lead._id)]
+      .slice(0, 10)
+      .map((post, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: absolute(href.post(lang, post.slug)),
+        name: post.title,
+      })),
+  };
+
   return (
     <div className="container-page py-8 sm:py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([orgLd, siteLd, listLd]) }}
+      />
+
+      <header className="border-line mb-10 border-b pb-8">
+        <h1 className="headline text-3xl sm:text-4xl">{dict.homeHeading}</h1>
+        <p className="text-muted mt-3 max-w-[46rem] text-[0.98rem] leading-relaxed">
+          {dict.homeIntro}
+        </p>
+      </header>
+
       <PostCard post={lead} lang={lang} variant="hero" priority />
 
       {secondary.length ? (
