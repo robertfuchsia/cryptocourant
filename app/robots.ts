@@ -1,7 +1,11 @@
 import type { MetadataRoute } from "next";
-import { absolute } from "@/lib/site";
+import { ALLOW_INDEXING, absolute } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
+  if (!ALLOW_INDEXING) {
+    return { rules: [{ userAgent: "*", disallow: "/" }] };
+  }
+
   return {
     rules: [
       {

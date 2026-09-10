@@ -7,6 +7,12 @@ export const SITE_URL = (
 export const absolute = (path: string) =>
   `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 
+/**
+ * Indexeren staat uit tot de site inhoud heeft. Zet NEXT_PUBLIC_ALLOW_INDEXING
+ * op 1 in Vercel zodra de eerste artikelen live staan.
+ */
+export const ALLOW_INDEXING = process.env.NEXT_PUBLIC_ALLOW_INDEXING === "1";
+
 export const POSTS_PER_PAGE = 12;
 
 export function parsePage(value: string | string[] | undefined) {

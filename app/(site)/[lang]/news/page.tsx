@@ -6,7 +6,9 @@ import { newsIndexQuery } from "@/sanity/queries";
 import { href, isLang, t, type Lang } from "@/lib/i18n";
 import { hreflangAlternates } from "@/lib/site";
 
-export const revalidate = 60;
+// Paginering leest searchParams, dus deze route rendert per request.
+// Data blijft gecached via de revalidate/tags in sanityFetch.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

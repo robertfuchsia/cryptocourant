@@ -2,26 +2,18 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { sanityFetch } from "@/sanity/fetch";
 import { PostList } from "@/components/PostList";
-import { categoryPostsQuery, categoryQuery, categorySlugsQuery } from "@/sanity/queries";
+import { categoryPostsQuery, categoryQuery } from "@/sanity/queries";
 import type { Category } from "@/sanity/types";
 import { CoinHeader } from "@/components/Ticker";
 import { href, isLang, t, type Lang } from "@/lib/i18n";
 import { hreflangAlternates } from "@/lib/site";
 
-export const revalidate = 60;
+// Paginering leest searchParams, dus deze route rendert per request.
+// Data blijft gecached via de revalidate/tags in sanityFetch.
+export const dynamic = "force-dynamic";
 
 type Params = { lang: string; slug: string };
 
-export async function generateStaticParams() {
-  const rows = await sanityFetch<Array<{ nl: string; en: string }>>({
-    query: categorySlugsQuery,
-    tags: ["category"],
-  });
-  return (rows ?? []).flatMap((r) => [
-    { lang: "nl", slug: r.nl },
-    { lang: "en", slug: r.en },
-  ]);
-}
 
 export async function generateMetadata({
   params,

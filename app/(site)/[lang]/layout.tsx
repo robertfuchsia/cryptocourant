@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { DraftBanner } from "@/components/DraftBanner";
 import { ThemeScript } from "@/components/ThemeToggle";
 import { isLang, LANGUAGES, t, HTML_LANG, type Lang } from "@/lib/i18n";
-import { SITE_URL, hreflangAlternates } from "@/lib/site";
+import { ALLOW_INDEXING, SITE_URL, hreflangAlternates } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,6 +44,7 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(SITE_URL),
+    robots: ALLOW_INDEXING ? undefined : { index: false, follow: false },
     title: { default: `${dict.siteName} — ${dict.tagline}`, template: `%s | ${dict.siteName}` },
     description: dict.tagline,
     applicationName: dict.siteName,
