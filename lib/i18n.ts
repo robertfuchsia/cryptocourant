@@ -35,6 +35,7 @@ export const t = {
     siteName: "CryptoCourant",
     tagline: "Crypto nieuws zonder ruis",
     homeHeading: "Crypto nieuws",
+    railTitle: "Uitgelicht",
     homeIntro:
       "Dagelijks crypto nieuws en analyse over de bitcoin koers, ethereum, XRP en de rest van de markt. " +
       "Elk artikel legt uit wat er gebeurde, welke cijfers eronder liggen en wat het betekent voor Nederlandse beleggers, " +
@@ -89,6 +90,7 @@ export const t = {
     siteName: "CryptoCourant",
     tagline: "Crypto news without the noise",
     homeHeading: "Crypto news",
+    railTitle: "Featured",
     homeIntro:
       "Daily crypto news and analysis on the bitcoin price, ethereum, XRP and the wider market. " +
       "Every article explains what happened, the numbers behind it and what it means for European investors, " +

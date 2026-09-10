@@ -31,7 +31,7 @@ export function PostCard({
 
   if (variant === "hero") {
     return (
-      <article className="group grid gap-6 lg:grid-cols-2 lg:items-center lg:gap-10">
+      <article className="group">
         <Link href={url} className="block overflow-hidden rounded-[var(--radius-card)]" tabIndex={-1} aria-hidden="true">
           <SanityImage
             image={post.mainImage}
@@ -39,22 +39,23 @@ export function PostCard({
             width={1200}
             height={600}
             priority={priority}
-            sizes="(min-width: 1024px) 50vw, 100vw"
+            quality={90}
+            sizes="(min-width: 1280px) 720px, (min-width: 1024px) 60vw, 100vw"
             className="aspect-[2/1] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         </Link>
-        <div>
+        <div className="mt-5">
           {category ? (
             <div className="mb-3">
               <CategoryPill category={category} lang={lang} />
             </div>
           ) : null}
-          <h2 className="headline text-3xl sm:text-4xl lg:text-[2.6rem]">
+          <h2 className="headline text-[1.8rem] leading-[1.12] sm:text-[2.2rem]">
             <Link href={url}>
               <span className="hover-title">{post.title}</span>
             </Link>
           </h2>
-          <p className="text-muted mt-4 text-base leading-relaxed sm:text-lg">
+          <p className="text-muted mt-3 text-[1.02rem] leading-relaxed">
             {post.excerpt}
           </p>
           <div className="mt-4 flex items-center gap-3">

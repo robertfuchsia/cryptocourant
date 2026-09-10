@@ -43,12 +43,13 @@ export const footerPagesQuery = groq`*[_type == "page" && ${LANG_FILTER} && show
 }`;
 
 export const homeQuery = groq`{
-  "featured": *[(_type == "post" || _type == "article") && ${LANG_FILTER} && !(_id in path("drafts.**"))]
-    | order(publishedAt desc)[0...3] ${CARD},
+  "featured": *[(_type == "post" || _type == "article") && ${LANG_FILTER} && featured == true && !(_id in path("drafts.**"))]
+    | order(publishedAt desc)[0...5] ${CARD},
   "latest": *[(_type == "post" || _type == "article") && ${LANG_FILTER} && !(_id in path("drafts.**"))]
     | order(publishedAt desc)[0...18] ${CARD},
-  "categories": *[_type == "category" && showInNav == true] | order(order asc)[0...4]{
+  "categories": *[_type == "category" && showInNav == true] | order(order asc)[0...6]{
     _id,
+    coinId,
     ${CATEGORY_TITLE},
     ${CATEGORY_SLUG},
     "posts": *[(_type == "post" || _type == "article") && ${LANG_FILTER} && references(^._id) && !(_id in path("drafts.**"))]
