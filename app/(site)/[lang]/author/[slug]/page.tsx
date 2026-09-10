@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { sanityFetch } from "@/sanity/fetch";
 import { authorPostsQuery, authorQuery, authorSlugsQuery } from "@/sanity/queries";
-import type { Author, Paginated, PostCard as PostCardType } from "@/sanity/types";
-import { PostCard } from "@/components/PostCard";
-import { Pagination } from "@/components/Pagination";
+import type { Author } from "@/sanity/types";
+import { PostList } from "@/components/PostList";
 import { SanityImage } from "@/components/SanityImage";
 import { href, isLang, t, type Lang } from "@/lib/i18n";
-import { POSTS_PER_PAGE, absolute, hreflangAlternates, pageRange, parsePage } from "@/lib/site";
+import { absolute, hreflangAlternates } from "@/lib/site";
 
 export const revalidate = 300;
 
@@ -70,18 +69,6 @@ export default async function AuthorPage({
     tags: ["author"],
   });
   if (!author) notFound();
-
-  const page = parsePage((await searchParams).page);
-  const { from, to } = pageRange(page);
-
-  const data = await sanityFetch<Paginated<PostCardType>>({
-    query: authorPostsQuery,
-    params: { lang, id: author._id, from, to },
-    tags: ["post"],
-  });
-
-  const items = data?.items ?? [];
-  const totalPages = Math.max(1, Math.ceil((data?.total ?? 0) / POSTS_PER_PAGE));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -146,22 +133,15 @@ export default async function AuthorPage({
         {dict.byAuthor} {author.name}
       </h2>
 
-      {items.length ? (
-        <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((post) => (
-            <PostCard key={post._id} post={post} lang={lang} />
-          ))}
-        </div>
-      ) : (
-        <p className="text-muted mt-8">{dict.nothingYet}</p>
-      )}
-
-      <Pagination
+      <PostList
         lang={lang}
+        query={authorPostsQuery}
+        params={{ id: author._id }}
         basePath={href.author(lang, author.slug)}
-        page={page}
-        totalPages={totalPages}
+        searchParams={searchParams}
+        gridClassName="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
       />
+
     </div>
   );
 }

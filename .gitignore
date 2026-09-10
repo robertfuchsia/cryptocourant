@@ -9,3 +9,6 @@ build
 .vercel
 next-env.d.ts
 tsconfig.tsbuildinfo
+PLAK-TOKEN-HIER.txt
+public/robert-bemelmans.png
+upload-foto.command

@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { sanityFetch } from "@/sanity/fetch";
+import { PostList } from "@/components/PostList";
 import { categoryPostsQuery, categoryQuery, categorySlugsQuery } from "@/sanity/queries";
-import type { Category, Paginated, PostCard as PostCardType } from "@/sanity/types";
-import { PostCard } from "@/components/PostCard";
-import { Pagination } from "@/components/Pagination";
+import type { Category } from "@/sanity/types";
 import { CoinHeader } from "@/components/Ticker";
 import { href, isLang, t, type Lang } from "@/lib/i18n";
-import { POSTS_PER_PAGE, hreflangAlternates, pageRange, parsePage } from "@/lib/site";
+import { hreflangAlternates } from "@/lib/site";
 
 export const revalidate = 60;
 
@@ -84,18 +83,6 @@ export default async function CategoryPage({
   });
   if (!category) notFound();
 
-  const page = parsePage((await searchParams).page);
-  const { from, to } = pageRange(page);
-
-  const data = await sanityFetch<Paginated<PostCardType>>({
-    query: categoryPostsQuery,
-    params: { lang, id: category._id, from, to },
-    tags: ["post"],
-  });
-
-  const items = data?.items ?? [];
-  const totalPages = Math.max(1, Math.ceil((data?.total ?? 0) / POSTS_PER_PAGE));
-
   return (
     <div className="container-page py-10 sm:py-14">
       <header className="max-w-2xl">
@@ -109,22 +96,14 @@ export default async function CategoryPage({
         {category.coinId ? <CoinHeader lang={lang} coinId={category.coinId} /> : null}
       </header>
 
-      {items.length ? (
-        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((post, i) => (
-            <PostCard key={post._id} post={post} lang={lang} priority={i < 3} />
-          ))}
-        </div>
-      ) : (
-        <p className="text-muted mt-10">{dict.nothingYet}</p>
-      )}
-
-      <Pagination
+      <PostList
         lang={lang}
+        query={categoryPostsQuery}
+        params={{ id: category._id }}
         basePath={href.category(lang, category.slug)}
-        page={page}
-        totalPages={totalPages}
+        searchParams={searchParams}
       />
+
     </div>
   );
 }
