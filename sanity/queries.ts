@@ -20,8 +20,13 @@ const CARD = `{
   categories[]->${CATEGORY_LITE}
 }`;
 
-// Filter die zowel kijkt naar het language veld als de ID-structuur van Sanity
-const LANG_FILTER = `(language == $lang || _id match "post." + $lang + ".*" || _id match "*." + $lang + ".*" || !defined(language))`;
+/**
+ * Taalfilter. Elk documenttype heeft een verplicht `language`-veld, dus filteren
+ * op dat veld is genoeg. Let op: document-ID's mogen geen punten bevatten —
+ * de publieke leesregel van Sanity (`_id in path("*")`) sluit gepunte ID's uit,
+ * waardoor bezoekers zonder token niets zouden zien.
+ */
+const LANG_FILTER = `language == $lang`;
 
 export const settingsQuery = groq`*[_type == "siteSettings"][0]{
   title,

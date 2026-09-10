@@ -87,7 +87,7 @@ for (const a of demo.authors) {
 
 for (const c of demo.categories) {
   docs.push({
-    _id: `category.${c.slug}`,
+    _id: `category-${c.slug}`,
     _type: "category",
     title: c.title,
     slug: { _type: "slug", current: c.slug },
@@ -98,7 +98,7 @@ for (const c of demo.categories) {
   });
 }
 
-const idFor = (p) => `post.${p.language}.${p.slug}`;
+const idFor = (p) => `post-${p.language}-${p.slug}`;
 
 for (const p of demo.posts) {
   const authorSlug = demo.authors.find((a) => a._id === p.authorId)?.slug;
@@ -120,7 +120,7 @@ for (const p of demo.posts) {
       return {
         _type: "reference",
         _key: c,
-        _ref: `category.${cat.slug}`,
+        _ref: `category-${cat.slug}`,
       };
     }),
     publishedAt: p.publishedAt,
