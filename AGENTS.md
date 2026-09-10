@@ -18,3 +18,19 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
   `curl -H "Authorization: Bearer $VERCEL_TOKEN" "https://api.vercel.com/v6/deployments?projectId=prj_ECex98azkeFRmHLz3bAQT4BD9tq9&teamId=team_hvs8lolJSGXIDeSF2E0WTlQO&limit=5"`
 - Lokale link staat in `.vercel/project.json` (gitignored)
 <!-- END:vercel -->
+
+<!-- BEGIN:sanity-ids -->
+## Sanity: document-ID's zonder punten
+
+De publieke leesregel van dit project is `_id in path("*")`. Die dekt alleen
+ID's **zonder punt**. Een ID als `post.nl.slug` is daardoor onzichtbaar voor
+bezoekers (en voor de server-fetch van de site, die zonder token leest), terwijl
+het in Studio gewoon zichtbaar lijkt.
+
+Regel: gepubliceerde documenten krijgen punt-loze ID's — `post-<lang>-<slug>`,
+`category-<slug>`, `author-<slug>`. Drafts houden het `drafts.`-voorvoegsel en
+blijven daardoor privé. Zie `scripts/seed.mjs`.
+
+Snelle controle (zonder token, zo ziet een bezoeker het):
+`curl "https://jen186iw.api.sanity.io/v2026-09-09/data/query/production?query=count(*[])"`
+<!-- END:sanity-ids -->
