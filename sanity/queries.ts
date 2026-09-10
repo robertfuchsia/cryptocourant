@@ -4,7 +4,7 @@ import { groq } from "next-sanity";
 const CATEGORY_SLUG = `"slug": select($lang == "en" => coalesce(slugEn.current, slug.current), slug.current)`;
 const CATEGORY_TITLE = `"title": coalesce(title[$lang], title.nl)`;
 
-const CATEGORY_LITE = `{ _id, ${CATEGORY_TITLE}, ${CATEGORY_SLUG} }`;
+const CATEGORY_LITE = `{ _id, coinId, ${CATEGORY_TITLE}, ${CATEGORY_SLUG} }`;
 
 const CARD = `{
   _id,
@@ -64,6 +64,7 @@ export const postSlugsQuery = groq`*[(_type == "post" || _type == "article") && 
 export const postQuery = groq`*[(_type == "post" || _type == "article") && slug.current == $slug && ${LANG_FILTER} && !(_id in path("drafts.**"))][0]{
   _id,
   title,
+  coin,
   "slug": slug.current,
   excerpt,
   body[]{

@@ -14,6 +14,8 @@ export type CategoryLite = {
   _id: string;
   title: string;
   slug: string;
+  /** CoinGecko-id, zodat een categorie aan een munt hangt. */
+  coinId?: string;
 };
 
 export type AuthorLite = {
@@ -41,6 +43,8 @@ export type Source = { label: string; url: string };
 
 export type Post = PostCard & {
   body: PortableTextBlock[];
+  /** CoinGecko-id van de munt waar dit artikel over gaat. */
+  coin?: string;
   sources?: Source[];
   seoTitle?: string;
   metaDescription?: string;
@@ -68,7 +72,6 @@ export type Author = {
 
 export type Category = CategoryLite & {
   description?: string;
-  coinId?: string;
 };
 
 export type SitePage = {

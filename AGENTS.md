@@ -93,7 +93,9 @@ dat hij erom vraagt gebeurt dit, in deze volgorde:
 
 **1. Artikel in Sanity zetten**
 Als draft, met punt-loos id `post-<lang>-<slug>`, `language`, `title`, `slug`,
-`excerpt`, `seoTitle`, `metaDescription`, `author` en `categories`. Koppen uit
+`excerpt`, `seoTitle`, `metaDescription`, `author`, `categories` en — als het
+artikel over één munt gaat — `coin` met het CoinGecko-id (`bitcoin`,
+`ethereum`, `ripple`, `cardano`, `solana`). Koppen uit
 het schrijfdoc blijven exact staan: geen kop verplaatst, geen kop tot tekst
 gemaakt, geen keyword of interne link weggelaten.
 
@@ -134,6 +136,23 @@ sessie openstaat. Zonder tijd: als draft laten staan en het even vragen.
 Na publicatie de live URL ophalen: status 200, featured image aanwezig, embeds
 gerenderd (`react-tweet-theme` in de HTML), geen terugval-links.
 <!-- END:aanlever -->
+
+<!-- BEGIN:pricesince -->
+## Koers sinds publicatie
+
+Onder de hoofdafbeelding van een artikel staat een strookje dat de koers van de
+publicatiedag naast de koers van nu zet: *9 september $1,42 → nu $1,38, −2,6%*.
+Daarmee ziet een lezer meteen of de niveaus in de tekst nog kloppen — geen
+enkele concurrent doet dit.
+
+Het werkt op twee voorwaarden: het artikel heeft een `coin` (of de eerste
+categorie heeft een `coinId`), en het is op een eerdere UTC-dag gepubliceerd.
+De historische koers is namelijk een dagslot; voor een artikel van vandaag valt
+er niets te vergelijken en blijft het strookje weg. Bron is
+`/coins/{id}/history` van CoinGecko: vrij toegankelijk en een dag cachebaar,
+want historie verandert niet meer. Zie `components/PriceSince.tsx`.
+
+<!-- END:pricesince -->
 
 <!-- BEGIN:etf -->
 ## ETF-stromen: welke bron kan wel en welke niet

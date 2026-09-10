@@ -27,6 +27,14 @@ export const post = defineType({
       validation: (r) => r.required(),
     }),
     defineField({
+      name: "coin",
+      title: "Munt (CoinGecko-id)",
+      description:
+        'Bijvoorbeeld bitcoin, ethereum, ripple of cardano. Hiermee toont het artikel wat de koers deed sinds publicatie. Leeg laten als het artikel niet over één munt gaat.',
+      type: "string",
+      group: "meta",
+    }),
+    defineField({
       name: "title",
       title: "Titel (H1)",
       type: "string",

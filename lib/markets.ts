@@ -116,6 +116,34 @@ export async function getMovers(count = 5, minVolume = 25_000_000, minMarketCap 
   }
 }
 
+/**
+ * Slotkoers op een bepaalde dag. Historie verandert niet meer, dus die mag
+ * een dag in de cache blijven staan. Bron: CoinGecko.
+ */
+export async function getPriceOnDate(id: string, isoDate: string): Promise<number | null> {
+  const d = new Date(isoDate);
+  if (Number.isNaN(d.getTime())) return null;
+
+  const dd = String(d.getUTCDate()).padStart(2, "0");
+  const mm = String(d.getUTCMonth() + 1).padStart(2, "0");
+  const url = `https://api.coingecko.com/api/v3/coins/${id}/history?date=${dd}-${mm}-${d.getUTCFullYear()}&localization=false`;
+
+  try {
+    const res = await fetch(url, {
+      next: { revalidate: 86400, tags: ["markets"] },
+      headers: { accept: "application/json" },
+    });
+    if (!res.ok) return null;
+    const data = (await res.json()) as {
+      market_data?: { current_price?: Record<string, number> };
+    };
+    const price = data?.market_data?.current_price?.usd;
+    return typeof price === "number" ? price : null;
+  } catch {
+    return null;
+  }
+}
+
 export function formatPrice(value: number, lang: Lang) {
   const locale = lang === "nl" ? "nl-NL" : "en-GB";
   const digits = value >= 1000 ? 0 : value >= 1 ? 2 : value >= 0.01 ? 4 : 6;

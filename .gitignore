@@ -9,9 +9,7 @@ build
 .vercel
 next-env.d.ts
 tsconfig.tsbuildinfo
-PLAK-TOKEN-HIER.txt
 public/robert-bemelmans.png
 upload-foto.command
-_to_delete/
-VERCEL-TOKEN.txt
 featured-images/
+Claude outputs/

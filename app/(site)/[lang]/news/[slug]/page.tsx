@@ -5,6 +5,7 @@ import { sanityFetch } from "@/sanity/fetch";
 import { postQuery, postSlugsQuery, relatedQuery } from "@/sanity/queries";
 import type { Post, PostCard as PostCardType } from "@/sanity/types";
 import { PortableBody, headings } from "@/components/PortableBody";
+import { PriceSince } from "@/components/PriceSince";
 import { PostCard } from "@/components/PostCard";
 import { SanityImage } from "@/components/SanityImage";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -228,6 +229,12 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
             <figcaption className="text-subtle mt-2 text-xs">{post.mainImage.credit}</figcaption>
           ) : null}
         </figure>
+
+        <PriceSince
+          coinId={post.coin || post.categories?.find((c) => c.coinId)?.coinId}
+          publishedAt={post.publishedAt}
+          lang={lang}
+        />
 
         <div className="mx-auto mt-10 max-w-[46rem]">
           {toc.length >= 3 ? (
